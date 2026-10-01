@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Crawler output: downloaded pages and URL lists / logs
+kod/indekser/preuzeto/
+kod/indekser/log/
+*.log
+
+# Large database artifacts (scraped shop content)
+baza/primarna_baza.sql
+baza/preciscena_baza.sql
+baza/sqlite/psz_primarna.sqlite
+
+# Editors
+.idea/
+.vscode/
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Office lock files
+~$*

@@ -1,0 +1,28 @@
+# Biblioteke potrebne za pokretanje projekta.
+# Instalacija:  pip install -r requirements.txt
+#
+# Napomena: nijedna od ovih biblioteka se ne koristi za OBUČAVANJE modela.
+# Linearna regresija, K-means, TF-IDF i kosinusna sličnost napisani su ručno.
+# numpy i pandas služe za rad sa nizovima i tabelama, matplotlib za grafikone,
+# requests i beautifulsoup4 za preuzimanje i parsiranje stranica, psycopg2 za
+# vezu sa bazom. Prozor aplikacije je tkinter, deo standardnog Python-a.
+
+# --- prikupljanje podataka (Zadatak 1) ---
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5.0
+
+# --- baza podataka (PyMySQL samo ako se koristi MySQL) ---
+psycopg2-binary>=2.9
+PyMySQL>=1.1
+
+# --- obrada, analiza i grafikoni (Zadaci 2 i 3) ---
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+openpyxl>=3.1
+
+# --- SAMO za proveru tačnosti sopstvenih implementacija ---
+# Projektni zadatak dozvoljava gotove biblioteke isključivo radi verifikacije.
+# Koristi se jedino u kod/evaluation/verifikacija.py.
+scikit-learn>=1.3

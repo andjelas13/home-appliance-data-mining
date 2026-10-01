@@ -1,0 +1,121 @@
+PROVERA TAČNOSTI SAMOSTALNIH IMPLEMENTACIJA
+Gotove biblioteke se ovde koriste isključivo za verifikaciju,
+kako projektni zadatak i dozvoljava — ne za obučavanje modela.
+Podaci: 11.984 proizvoda iz prečišćene baze
+
+==============================================================================
+1. LINEARNA REGRESIJA — sopstveni gradijentni spust vs. scikit-learn
+==============================================================================
+Model uči logaritam cene; R² se računa u tom prostoru, na test skupu.
+Sopstveni gradijentni spust: stopa učenja 0,1, najviše 8.000 iteracija.
+
+seme podele  sopstveni GD  LinearRegression  Ridge λ=0,1  max koef. GD  max koef. LR
+       2026        0.8414            0.8501       0.8490          1.82        153.47
+          1        0.8389           -0.3961       0.8224          1.78         89.98
+          7        0.8329            0.8455       0.8540          2.19         73.71
+         42        0.8424           -0.5039       0.8300          1.74        104.22
+        123        0.8449           -2.8080       0.4100          1.73        222.45
+        999        0.8435            0.8551       0.8592          2.12         62.77
+
+raspon R² — sopstveni GD                 0.8329 do 0.8449
+raspon R² — LinearRegression             -2.8080 do 0.8551
+najveći koeficijent — sopstveni GD       2.19
+najveći koeficijent — LinearRegression   222.45
+
+--- Građa matrice obeležja ---
+broj kolona                              772 do 790
+rang matrice                             401 do 407
+konstantnih kolona interakcije           344 do 362
+uslovljenost (cond)                      6.1e+20 do 8.7e+21
+
+Matrica je izrazito kolinearna, i to je očekivano. Najveći deo ranga gube kolone
+interakcije za karakteristike koje kategorija uopšte nema: popunjene su jednom
+medijanom, pa unutar kategorije ponavljaju njenu one-hot kolonu. Uz to, pošto svaki
+proizvod pripada tačno jednoj kategoriji, zbir svih kolona interakcije jedne
+karakteristike jednak je samoj toj karakteristici, a zbir one-hot kolona je jedinica.
+Zato postoji beskonačno mnogo različitih vektora koeficijenata koji na skupu
+za treniranje daju isto predviđanje.
+
+Metoda najmanjih kvadrata je na takvoj matrici NESTABILNA: zavisno od podele,
+R² joj se kreće od -2,81 do 0,86, a koeficijenti rastu i do 222.
+Sopstveni gradijentni spust je na svim podelama između 0,83 i 0,84,
+a najveći koeficijent mu je 2,19.
+
+Zašto: metoda najmanjih kvadrata vraća rešenje najmanje norme, ali matrica ima i
+pravce koje podaci određuju tek neznatno (vrlo male singularne vrednosti, npr. retki
+brendovi i kategorije). U tim pravcima najmanji kvadrati daju ogromne koeficijente
+koji ne važe na novim podacima. Gradijentni spust polazi od nule i u tim pravcima se
+za 8.000 iteracija gotovo ne pomeri, pa se ponaša kao da je regularizovan
+(rani prekid), iako to nije izričito zadato; cena toga je nešto veća greška na
+skupu za treniranje. Ridge, koji takvu regularizaciju ima izričito, daje R²
+od 0,41 do 0,86 — znatno ujednačenije od metode najmanjih kvadrata,
+što pokazuje da je razlika posledica regularizacije. Da je sam kod tačan,
+proverava odeljak 1a.
+
+==============================================================================
+1a. GRADIJENT I SPUST — provera same implementacije
+==============================================================================
+gradijent − numerički izvod, λ = 0       9.3e-09
+gradijent − numerički izvod, λ = 2       9.6e-09
+rang matrice numeričkih kolona           18 od 18
+najveća razlika θ (spust − lstsq)        1.4e-14
+
+Gradijent se poklapa sa numeričkim izvodom do greške samog numeričkog računa, a na
+matrici punog ranga spust stiže do tačnog rešenja najmanjih kvadrata. Implementacija
+je dakle tačna, a razlike iz odeljka 1 potiču od kolinearnosti i ranog prekida.
+
+==============================================================================
+2. K-SREDNJIH VREDNOSTI — sopstvena implementacija vs. scikit-learn
+==============================================================================
+Skup: frižideri, 1.112 proizvoda, obeležja: cena_min, zapremina_l, energetska_rang
+
+  K   inercija (moja)  inercija (sklearn)    odnos   podudarnost dodela
+  3            467.25              467.25   1.0000               97.5%
+  4            339.72              339.72   1.0000               99.9%
+  5            271.33              271.32   1.0000               99.8%
+  6            231.82              230.69   1.0049               94.7%
+
+Inercija je zbir kvadrata rastojanja do centara — manja je bolja.
+Odnos blizu 1,0 znači da su oba postupka našla podjednako dobar raspored.
+Oznake klastera su proizvoljne, pa se podudarnost meri preko parova tačaka:
+koliki procenat parova obe implementacije svrstavaju isto (zajedno ili odvojeno).
+
+Silhouette koeficijent za K = 4, nad istom podelom na klastere:
+sopstvena formula                        0.4074547594
+silhouette_score — scikit-learn          0.4074547594
+apsolutna razlika                        2.157e-13
+Sopstvena funkcija računa na uzorku od 2.000 tačaka kada ih je više; ovde ih je
+manje, pa obe strane računaju nad svim tačkama.
+
+==============================================================================
+3. KOSINUSNA SLIČNOST — sopstvena formula vs. scikit-learn
+==============================================================================
+Testirano na 200 nasumičnih vektora dimenzije 40 (40.000 parova).
+najveća apsolutna razlika                6.661e-16
+prosečna apsolutna razlika               4.141e-17
+
+kosinusna_slicnost(a, b) — sopstvena     0.267673119676
+cosine_similarity — scikit-learn         0.267673119676
+
+Reč je o istoj matematičkoj formuli, pa se rezultati moraju poklopiti do
+mašinske preciznosti; razlika ispod 1e-15 je posledica zaokruživanja.
+
+==============================================================================
+4. TF-IDF — sopstvena implementacija vs. scikit-learn
+==============================================================================
+Skup: 400 naziva televizora
+veličina rečnika — sopstvena             511
+veličina rečnika — scikit-learn          511
+
+prosečno poklapanje Top-5 preporuka      100.0%
+nazivi sa potpuno istim Top-5            399 / 400
+poklapanje bez zaokruživanja             90.7%
+isti Top-5 bez zaokruživanja             336 / 400
+
+Vrednosti idf-a se razlikuju jer scikit-learn (smooth_idf) računa ln((1+N)/(1+df)) + 1,
+a moja formula ln(N/(1+df)) + 1, pa se ne porede sami brojevi nego ono što
+je za preporuke jedino važno — redosled najsličnijih proizvoda. Pre poređenja obe
+sličnosti zaokružujem na 12 decimala, pa nazivi sa jednakom sličnošću u obe liste
+ostaju redom naziva. Bez tog koraka poklapanje je manje samo zato što se jednako
+slični nazivi razlikuju tek na 16. decimali, pa ispada slučajno koji je od njih
+peti, a koji šesti.

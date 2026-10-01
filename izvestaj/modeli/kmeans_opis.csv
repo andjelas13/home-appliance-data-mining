@@ -1,0 +1,5 @@
+klaster,broj_proizvoda,udeo_procenat,prosecna_cena,medijana_cene,najcesca_kategorija,najcesci_brend,opis,prosek_cena_min,prosek_zapremina_l,prosek_energetska_rang,prosek_rang_nova,prosek_rang_stara,udeo_stare_skale
+0,546,49.1,50370,46999,frizider,Beko,"jeftiniji uređaji, najčešće energetska klasa E po novoj skali",50370.23,261.17,5.47,5.48,4.0,0.7
+1,306,27.5,61924,58299,frizider,Beko,"uređaji srednje cene, mešane energetske skale, najčešće energetska klasa A+ po prethodnoj klasifikaciji",61924.09,313.92,2.89,3.49,2.69,75.5
+3,209,18.8,126471,118999,frizider,Beko,"skuplji uređaji, veća zapremina, najčešće energetska klasa E po novoj skali",126470.63,519.77,4.95,5.2,2.65,9.6
+2,51,4.6,306069,279999,frizider,LG,"znatno skuplji uređaji, znatno veća zapremina, najčešće energetska klasa F po novoj skali",306068.51,565.2,4.96,5.19,2.25,7.8

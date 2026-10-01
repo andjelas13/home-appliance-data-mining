@@ -1,0 +1,81 @@
+PRIMERI RADA PODSISTEMA ZA PREPORUČIVANJE (Zadatak 6)
+Težinski udeli: numeričke karakteristike 60%, brend 15%, naziv 25%
+Mera sličnosti: kosinusna sličnost, ručno implementirana.
+
+====================================================================================================
+POLAZNI PROIZVOD: Gorenje Kombinovani frižider NRKE62XL
+   kategorija: frizider   brend: Gorenje   cena: 48.999 RSD
+----------------------------------------------------------------------------------------------------
+#    sličnost    cena (RSD)  brend          naziv
+----------------------------------------------------------------------------------------------------
+1      0,7620        53.999  Gorenje        Gorenje Kombinovani frižider NRK6192SYBK
+2      0,7620        53.531  Gorenje        Gorenje Kombinovani frižider N61EA2XL4
+3      0,7618        44.999  Gorenje        Gorenje Kombinovani frižider NRK6192SYW
+4      0,7609        56.844  Gorenje        Gorenje Kombinovani frižider NRK619EABXL4
+5      0,7602        53.999  Gorenje        Gorenje Kombinovani frižider N61EA2W4
+====================================================================================================
+
+====================================================================================================
+POLAZNI PROIZVOD: HISENSE 75Q7S Hi-QLED 4K Ultra HD
+   kategorija: televizor   brend: Hisense   cena: 86.999 RSD
+----------------------------------------------------------------------------------------------------
+#    sličnost    cena (RSD)  brend          naziv
+----------------------------------------------------------------------------------------------------
+1      0,8890        84.999  Hisense        HISENSE 75Q7S PRO QLED 4K Ultra HD
+2      0,7904        79.999  Hisense        HISENSE 75E7Q PRO QLED 4K Ultra HD
+3      0,7725        72.999  Hisense        HISENSE 75A6Q 4K Ultra HD
+4      0,7446        71.999  Hisense        HISENSE 65E89Q ULED Mini LED 4K Ultra HD
+5      0,7356        58.999  Hisense        HISENSE 65Q7S QLED 4K Ultra HD
+====================================================================================================
+
+====================================================================================================
+POLAZNI PROIZVOD: GORENJE WNHEI72SAS Mašina za pranje veša
+   kategorija: ves_masina   brend: Gorenje   cena: 35.699 RSD
+----------------------------------------------------------------------------------------------------
+#    sličnost    cena (RSD)  brend          naziv
+----------------------------------------------------------------------------------------------------
+1      0,7533        33.999  Gorenje        GORENJE WG2PS72A12 Mašina za pranje veša
+2      0,7529        36.999  Gorenje        Gorenje Mašina za pranje veša WEI72SBDS
+3      0,7425        29.999  Gorenje        GORENJE W3NGPI61SAS Mašina za pranje veša
+4      0,7224        31.999  Gorenje        GORENJE WNGPI72SBS Mašina za pranje veša
+5      0,7217        24.999  Gorenje        GORENJE W3NGPI62SBS Mašina za pranje veša
+====================================================================================================
+
+====================================================================================================
+POLAZNI PROIZVOD: TESLA Inverter klima uređaj TT34EX82SM-1232IAW
+   kategorija: klima   brend: Tesla   cena: 41.499 RSD
+----------------------------------------------------------------------------------------------------
+#    sličnost    cena (RSD)  brend          naziv
+----------------------------------------------------------------------------------------------------
+1      0,8717        41.499  Tesla          TESLA TT34EX82BM-1232IAW Inverter klima uređaj
+2      0,7652        34.999  Tesla          TESLA TT34ZA31-1232IA Inverter klima uređaj
+3      0,7564        32.999  Tesla          TESLA TA36QQDT-1232IAWT Inverter klima uređaj
+4      0,7545        30.999  Tesla          TESLA TA36QQAT-1232IA Inverter klima uređaj
+5      0,6211        49.999  Hisense        HISENSE Klima uređaj inverter KB35YR3E
+====================================================================================================
+
+====================================================================================================
+POLAZNI PROIZVOD: Midea Inverter klima GAIA-12HRFN8-IG
+   kategorija: klima   brend: Midea   cena: 89.999 RSD
+----------------------------------------------------------------------------------------------------
+#    sličnost    cena (RSD)  brend          naziv
+----------------------------------------------------------------------------------------------------
+1      0,6130        81.999  Midea          Midea Inverter klima Breezeless MSFAAU-12HRFN8.Wi-Fi
+2      0,5861        89.999  Midea          Midea Inverter klima GAIA-12HRFN8
+3      0,5645        81.999  Midea          MIDEA Breezeless MSFAAU-12HRFN8 Inverter klima uređa
+4      0,5467       130.599  LG             LG Inverter klima AP12RT.NSJ
+5      0,5417       127.999  Samsung        SAMSUNG AR70H09CAAWNEU Inverter klima uređaj
+====================================================================================================
+
+====================================================================================================
+POLAZNI PROIZVOD: Gorenje Kombinovani frižider NRK11PWJ
+   kategorija: frizider   brend: Gorenje   cena: 33.999 RSD
+----------------------------------------------------------------------------------------------------
+#    sličnost    cena (RSD)  brend          naziv
+----------------------------------------------------------------------------------------------------
+1      0,7596        35.099  Gorenje        Gorenje Kombinovani frižider NRK611PS4
+2      0,7596        30.599  Gorenje        Gorenje Kombinovani frižider NRK6191GHW4
+3      0,7592        27.799  Gorenje        Gorenje Kombinovani frižider NRK611PW4
+4      0,7590        32.599  Gorenje        Gorenje Kombinovani frižider NRK6191MW
+5      0,7587        40.999  Gorenje        Gorenje Kombinovani frižider NRK611SYW4
+====================================================================================================
